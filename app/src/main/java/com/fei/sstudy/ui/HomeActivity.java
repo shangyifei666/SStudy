@@ -97,11 +97,11 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 mScheduleFragment = new ScheduleFragment();
             }
             fragment = mScheduleFragment;
-        } else if (view == mToolLayout){
-            if (mToolFragment == null) {
-                mToolFragment = new ToolFragment();
+        } else if (view == mUserLayout){
+            if (mUserFragment == null) {
+                mUserFragment = new UserFragment();
             }
-            fragment = mToolFragment;
+            fragment = mUserFragment;
         } else {
             return;
         }
@@ -113,9 +113,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         }
         if (mContent != fragment){
             if (!fragment.isAdded()){
-                transaction.hide(mContent).add(fragment.getId(),fragment).commitAllowingStateLoss();
+                transaction.hide(mContent).add(mFragment.getId(),fragment).commit();
             } else {
-                transaction.hide(mContent).show(fragment).commitAllowingStateLoss();
+                transaction.hide(mContent).show(fragment).commit();
             }
             mContent = fragment;
         }
