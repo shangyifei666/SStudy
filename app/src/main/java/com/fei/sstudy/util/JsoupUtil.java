@@ -32,7 +32,7 @@ public class JsoupUtil{
         Document document = getDocument();
         Log.d("doc", String.valueOf(document));
         /**
-         * todo 假如cookie过期的处理
+         * todo 假如cookie过期的处理 处理
          */
         String name = document.select("div[id=col_xm]").first().text();
         String college = document.select("div[id=col_jg_id]").first().text();
