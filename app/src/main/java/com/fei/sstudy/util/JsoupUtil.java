@@ -32,8 +32,12 @@ public class JsoupUtil{
      * @return 是否请求成功（取决于cookie是否失效）
      */
     public Boolean getStudent(String url){
+        Log.d("JsoupUtil","getStudent url: " + url);
         this.url = url;
         Student student = Student.getInstance();
+        String name = "未登陆";
+        String college = "";
+
         Document document = getDocument();
         Log.d("doc", String.valueOf(document));
 
@@ -41,8 +45,14 @@ public class JsoupUtil{
             //cookie已过期
             return false;
         }
-        String name = document.select("div[id=col_xm]").first().text();
-        String college = document.select("div[id=col_jg_id]").first().text();
+        Elements eName = document.select("div[id=col_xm]");
+        if (eName.first()!=null){
+            name = eName.first().text();
+        }
+        Elements eCollege = document.select("div[id=col_jg_id]");
+        if (eCollege.first()!=null){
+             college = eCollege.first().text();
+        }
         student.setName(name);
         student.setCollege(college);
         Log.d("name",name);
