@@ -58,6 +58,7 @@ public class LoginActivity extends AppCompatActivity {
                 String cookie = cookieManager.getCookie(String.valueOf(request.getUrl()));
                 Log.d(TAG,"cookie: "+cookie);
                 saveCookie(cookie);
+                LoginActivity.this.finish();
                 return false;
             }
         });

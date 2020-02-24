@@ -33,7 +33,7 @@ public class UserFragment extends Fragment implements View.OnClickListener {
     private TextView tv_sCollege;
     private ContentLoadingProgressBar lodingBar;
     /**
-     * todo 登陆按钮逻辑处理  学号的保存处理
+     * todo 学号的保存处理
      */
 
     Handler mHandler = new Handler(){

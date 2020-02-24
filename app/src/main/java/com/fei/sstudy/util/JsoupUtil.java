@@ -36,10 +36,9 @@ public class JsoupUtil{
         Student student = Student.getInstance();
         Document document = getDocument();
         Log.d("doc", String.valueOf(document));
-        /**
-         * todo 假如cookie过期的处理 处理
-         */
+
         if (document==null){
+            //cookie已过期
             return false;
         }
         String name = document.select("div[id=col_xm]").first().text();
@@ -77,9 +76,5 @@ public class JsoupUtil{
 
         return cookie;
     }
-
-    /**
-     * todo delete context
-     */
 
 }
