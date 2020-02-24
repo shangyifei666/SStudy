@@ -2,8 +2,10 @@ package com.fei.sstudy.ui.fragment;
 
 
 import android.content.Intent;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 
+import androidx.core.widget.ContentLoadingProgressBar;
 import androidx.fragment.app.Fragment;
 
 import android.os.Handler;
@@ -29,6 +31,7 @@ public class UserFragment extends Fragment implements View.OnClickListener {
     private Button btnLogin;
     private TextView tv_sName;
     private TextView tv_sCollege;
+    private ContentLoadingProgressBar lodingBar;
     /**
      * todo 登陆按钮逻辑处理  学号的保存处理
      */
@@ -37,6 +40,9 @@ public class UserFragment extends Fragment implements View.OnClickListener {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
+
+            closeLoadingBar();//进度条关闭
+
             switch (msg.what){
                 case Action.SHOW_STUDENT:
                     Student student = Student.getInstance();
@@ -72,10 +78,20 @@ public class UserFragment extends Fragment implements View.OnClickListener {
         loadStudent();
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        btnLogin.setVisibility(View.GONE);
+    }
+
     private void initView(View view){
         btnLogin = view.findViewById(R.id.btn_login);
         tv_sName = view.findViewById(R.id.tv_name);
         tv_sCollege = view.findViewById(R.id.tv_college);
+        lodingBar = view.findViewById(R.id.loding_bar);
+        //设置加载条颜色
+        lodingBar.getIndeterminateDrawable().setColorFilter(getResources().getColor(R.color.colorPrimary), PorterDuff.Mode.MULTIPLY);
+
         btnLogin.setOnClickListener(this);
     }
 
@@ -96,6 +112,7 @@ public class UserFragment extends Fragment implements View.OnClickListener {
     private void loadStudent(){
         Student student = Student.getInstance();
         if (student.getName()==null || student.getName().equals("") || student.getCollege()==null || student.getCollege().equals("")){
+            setLoadingBar();
             /**
              * todo 优化线程启动方式
              */
@@ -113,6 +130,13 @@ public class UserFragment extends Fragment implements View.OnClickListener {
         } else {
             mHandler.sendEmptyMessage(Action.SHOW_STUDENT);
         }
+    }
 
+    private void setLoadingBar(){
+        lodingBar.setVisibility(View.VISIBLE);
+    }
+
+    private void closeLoadingBar(){
+        lodingBar.setVisibility(View.GONE);
     }
 }

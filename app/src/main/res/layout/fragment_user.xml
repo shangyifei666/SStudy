@@ -120,4 +120,12 @@
         android:text="登陆"
         android:visibility="gone"/>
 
+    <androidx.core.widget.ContentLoadingProgressBar
+        android:id="@+id/loding_bar"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_gravity="center"
+        style="?android:attr/progressBarStyleSmall"
+        android:visibility="gone"/>
+
 </FrameLayout>
