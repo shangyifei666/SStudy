@@ -15,6 +15,7 @@ import android.webkit.WebViewClient;
 
 import com.fei.sstudy.R;
 import com.fei.sstudy.entity.Config;
+import com.fei.sstudy.util.StatusBarUtils;
 
 public class LoginActivity extends AppCompatActivity {
     private final String TAG = "LoginActivity";
@@ -25,6 +26,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        StatusBarUtils.setWindowStatusBarColor(this,getResources().getColor(R.color.color_education_system));
 
         webView = findViewById(R.id.wv_login);
 
