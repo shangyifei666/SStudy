@@ -26,7 +26,12 @@ public class JsoupUtil{
         this.context = context;
     }
 
-    public Student getStudent(String url){
+    /**
+     *
+     * @param url 访问的地址
+     * @return 是否请求成功（取决于cookie是否失效）
+     */
+    public Boolean getStudent(String url){
         this.url = url;
         Student student = Student.getInstance();
         Document document = getDocument();
@@ -34,6 +39,9 @@ public class JsoupUtil{
         /**
          * todo 假如cookie过期的处理 处理
          */
+        if (document==null){
+            return false;
+        }
         String name = document.select("div[id=col_xm]").first().text();
         String college = document.select("div[id=col_jg_id]").first().text();
         student.setName(name);
@@ -41,7 +49,7 @@ public class JsoupUtil{
         Log.d("name",name);
         Log.d("college",college);
 
-        return student;
+        return true;
     }
 
     private Document getDocument(){
@@ -49,6 +57,7 @@ public class JsoupUtil{
             Connection.Response  response= null;
                 response = Jsoup.connect(url)
                         .cookies(getCookie())
+                        .timeout(10000)
                         .execute();
                 return response.parse();
             } catch (IOException e) {
@@ -68,5 +77,9 @@ public class JsoupUtil{
 
         return cookie;
     }
+
+    /**
+     * todo delete context
+     */
 
 }

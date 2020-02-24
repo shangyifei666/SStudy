@@ -43,6 +43,10 @@ public class UserFragment extends Fragment implements View.OnClickListener {
                     tv_sName.setText(student.getName());
                     tv_sCollege.setText(student.getCollege());
                     break;
+
+                case Action.SHOU_LOGIN_BUTTON:
+                    btnLogin.setVisibility(View.VISIBLE);
+                    break;
             }
         }
     };
@@ -92,12 +96,18 @@ public class UserFragment extends Fragment implements View.OnClickListener {
     private void loadStudent(){
         Student student = Student.getInstance();
         if (student.getName()==null || student.getName().equals("") || student.getCollege()==null || student.getCollege().equals("")){
+            /**
+             * todo 优化线程启动方式
+             */
             new Thread(new Runnable() {
                 @Override
                 public void run() {
                     JsoupUtil jsoupUtil = new JsoupUtil(getContext());
-                    jsoupUtil.getStudent(Config.STUDENT);
-                    mHandler.sendEmptyMessage(Action.SHOW_STUDENT);
+                    if (jsoupUtil.getStudent(Config.STUDENT)){
+                        mHandler.sendEmptyMessage(Action.SHOW_STUDENT);
+                    } else {
+                        mHandler.sendEmptyMessage(Action.SHOU_LOGIN_BUTTON);
+                    }
                 }
             }).start();
         } else {
