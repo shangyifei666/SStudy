@@ -23,6 +23,8 @@ import com.fei.sstudy.entity.Student;
 import com.fei.sstudy.ui.LoginActivity;
 import com.fei.sstudy.util.JsoupUtil;
 
+import static com.fei.sstudy.util.ThreadPoolUtil.THREAD_POOL_EXECUTOR;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -113,10 +115,8 @@ public class UserFragment extends Fragment implements View.OnClickListener {
         Student student = Student.getInstance();
         if (student.getName()==null || student.getName().equals("") || student.getCollege()==null || student.getCollege().equals("")){
             setLoadingBar();
-            /**
-             * todo 优化线程启动方式
-             */
-            new Thread(new Runnable() {
+
+            Runnable mRunnable = new Runnable() {
                 @Override
                 public void run() {
                     JsoupUtil jsoupUtil = new JsoupUtil(getContext());
@@ -126,7 +126,8 @@ public class UserFragment extends Fragment implements View.OnClickListener {
                         mHandler.sendEmptyMessage(Action.SHOU_LOGIN_BUTTON);
                     }
                 }
-            }).start();
+            };
+            THREAD_POOL_EXECUTOR.execute(mRunnable);
         } else {
             mHandler.sendEmptyMessage(Action.SHOW_STUDENT);
         }
