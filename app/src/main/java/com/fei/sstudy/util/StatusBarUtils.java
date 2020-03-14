@@ -3,6 +3,7 @@ package com.fei.sstudy.util;
 import android.app.Activity;
 import android.app.Dialog;
 import android.os.Build;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -18,6 +19,33 @@ public class StatusBarUtils {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * 状态栏字体黑色
+     * @param activity activity
+     */
+    public static void setWindowTextLightBarColor(Activity activity){
+        Window window = activity.getWindow();
+        window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+    }
+
+    /**
+     * 状态栏字体白色
+     * @param activity activity
+     */
+    public static void setWindowTextDayBarColor(Activity activity){
+        Window window = activity.getWindow();
+        window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+    }
+
+    /**
+     * 状态栏覆盖Activity
+     * @param activity activity
+     */
+    public static void setWindowTranBar(Activity activity){
+        Window window = activity.getWindow();
+        window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
     }
 
     //设置Dialog对应的顶部状态栏的颜色

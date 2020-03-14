@@ -22,6 +22,7 @@ import com.fei.sstudy.entity.Config;
 import com.fei.sstudy.entity.Student;
 import com.fei.sstudy.ui.LoginActivity;
 import com.fei.sstudy.util.JsoupUtil;
+import com.fei.sstudy.util.StatusBarUtils;
 
 import static com.fei.sstudy.util.ThreadPoolUtil.THREAD_POOL_EXECUTOR;
 
@@ -69,6 +70,7 @@ public class UserFragment extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_user, container, false);
+        changeStatusBar();
         initView(view);
 
         return view;
@@ -84,6 +86,12 @@ public class UserFragment extends Fragment implements View.OnClickListener {
     public void onPause() {
         super.onPause();
         btnLogin.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        changeStatusBar();
     }
 
     private void initView(View view){
@@ -139,5 +147,13 @@ public class UserFragment extends Fragment implements View.OnClickListener {
 
     private void closeLoadingBar(){
         lodingBar.setVisibility(View.GONE);
+    }
+
+    /**
+     * 改变状态栏颜色
+     */
+    private void changeStatusBar(){
+        StatusBarUtils.setWindowStatusBarColor(getActivity(),getResources().getColor(R.color.colorPrimary));
+        StatusBarUtils.setWindowTextDayBarColor(getActivity());
     }
 }
