@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="shadle_hight">60dp</dimen>
+    <dimen name="shadle_width">50dp</dimen>
+</resources>

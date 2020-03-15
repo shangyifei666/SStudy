@@ -4,10 +4,14 @@
     <color name="colorPrimaryDark">#F8D02D</color>
     <color name="colorAccent">#D81B60</color>
 
+    <color name="transparent">#00ff00ff</color>
+
     <color name="set_activity_bg">#F2F2F2</color>
     <color name="color_line">#FFE8E8E8</color>
     <color name="color_text">#000000</color>
     <color name="color_system_text">#F8D02D</color>
+
+    <color name="color_shedule_bg">#F8F8F8</color>
 
     <color name="color_education_system">#0483D4</color>
     <color name="color_shedule_system">#FFFFFF</color>
