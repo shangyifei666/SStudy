@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.widget.ContentLoadingProgressBar;
 import androidx.fragment.app.Fragment;
 
@@ -35,6 +36,7 @@ public class UserFragment extends Fragment implements View.OnClickListener {
     private TextView tv_sName;
     private TextView tv_sCollege;
     private ContentLoadingProgressBar lodingBar;
+    private ConstraintLayout contentLayout;
     /**
      * todo 学号的保存处理
      */
@@ -51,6 +53,7 @@ public class UserFragment extends Fragment implements View.OnClickListener {
                     Student student = Student.getInstance();
                     tv_sName.setText(student.getName());
                     tv_sCollege.setText(student.getCollege());
+                    contentLayout.setVisibility(View.VISIBLE);
                     break;
 
                 case Action.SHOU_LOGIN_BUTTON:
@@ -96,13 +99,14 @@ public class UserFragment extends Fragment implements View.OnClickListener {
 
     private void initView(View view){
         btnLogin = view.findViewById(R.id.btn_login);
+        btnLogin.setOnClickListener(this);
         tv_sName = view.findViewById(R.id.tv_name);
         tv_sCollege = view.findViewById(R.id.tv_college);
         lodingBar = view.findViewById(R.id.loding_bar);
         //设置加载条颜色
         lodingBar.getIndeterminateDrawable().setColorFilter(getResources().getColor(R.color.colorPrimary), PorterDuff.Mode.MULTIPLY);
 
-        btnLogin.setOnClickListener(this);
+        contentLayout = view.findViewById(R.id.cl_content);
     }
 
     @Override
