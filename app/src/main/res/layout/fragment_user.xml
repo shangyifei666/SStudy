@@ -135,7 +135,8 @@
         android:layout_marginTop="160dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:background="@drawable/shape_wite">
+        android:background="@drawable/shape_wite"
+        android:visibility="gone">
 
         <TextView
             android:id="@+id/content_tv_1"
