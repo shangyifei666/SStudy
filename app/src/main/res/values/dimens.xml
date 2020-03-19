@@ -3,5 +3,8 @@
     <dimen name="shadle_hight">60dp</dimen>
     <dimen name="shadle_width">50dp</dimen>
 
+    <dimen name="schadle_rect_hight">58dp</dimen>
+    <dimen name="schadle_rect_width">50dp</dimen>
+
     <dimen name="main_text_size">45px</dimen>
 </resources>
