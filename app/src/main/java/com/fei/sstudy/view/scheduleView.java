@@ -88,7 +88,7 @@ public class scheduleView extends View {
     }
 
     private void init(){
-        scheduleHightCount = 2;
+        scheduleHightCount = 4;
         mPaint = new Paint();
         mPaint.setColor(Color.RED);
     }
@@ -97,7 +97,7 @@ public class scheduleView extends View {
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         setMeasuredDimension(schduleWidth,schduleHeight*scheduleHightCount);
-        mRectF = new RectF(0,0,schduleWidth,schduleHeight*scheduleHightCount);
+        mRectF = new RectF(0,0,schduleWidth,schduleHeight*scheduleHightCount-4);
     }
 
     @Override
