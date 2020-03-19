@@ -56,6 +56,10 @@ public class scheduleView extends View {
             Log.d(TAG,"--------isLongClick--------");
             isLongCilck = true;
             toVibrator();
+
+            /**
+             * todo 长按后操作
+             */
 //            mLongClickListener.onLongClick();
         }
     };
@@ -88,7 +92,7 @@ public class scheduleView extends View {
     }
 
     private void init(){
-        scheduleHightCount = 4;
+        scheduleHightCount = 1;
         mPaint = new Paint();
         mPaint.setColor(Color.RED);
     }
@@ -138,6 +142,9 @@ public class scheduleView extends View {
 
             case MotionEvent.ACTION_UP:
                 Log.d(TAG,"event.ACTION_UP");
+                isLongCilck = false;
+                mHandler.removeCallbacks(mLongClickRunnable);
+                parent.requestDisallowInterceptTouchEvent(false);
                 break;
         }
 
