@@ -132,7 +132,7 @@ public class scheduleView extends View {
         textPaintBig.setAntiAlias(true);
         textPaintSmall.setAntiAlias(true);
 
-        mPaint.setColor(Color.RED);
+        mPaint.setColor(getResources().getColor(R.color.color_shedule_system));
         textPaintBig.setColor(Color.WHITE);
         textPaintSmall.setColor(Color.WHITE);
 
@@ -206,7 +206,7 @@ public class scheduleView extends View {
                 Log.d(TAG,"event.ACTION_DOWN");
                 mFirstX = x;
                 mFirstY = y;
-                mHandler.postDelayed(mLongClickRunnable,2000);
+                mHandler.postDelayed(mLongClickRunnable,1500);
                 parent.requestDisallowInterceptTouchEvent(true);
                 return true;
 
