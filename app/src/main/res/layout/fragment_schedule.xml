@@ -398,16 +398,6 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintRight_toRightOf="parent"/>
 
-                <com.fei.sstudy.view.scheduleView
-                    android:layout_width="50dp"
-                    android:layout_height="60dp"
-                    app:layout_constraintStart_toStartOf="@id/v_wed"
-                    app:layout_constraintTop_toTopOf="@id/tv_1"/>
-                <com.fei.sstudy.view.scheduleView
-                    android:layout_width="50dp"
-                    android:layout_height="60dp"
-                    app:layout_constraintStart_toStartOf="@id/v_wed"
-                    app:layout_constraintTop_toTopOf="@id/tv_5"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

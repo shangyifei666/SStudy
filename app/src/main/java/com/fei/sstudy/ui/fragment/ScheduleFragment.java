@@ -12,7 +12,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.fei.sstudy.R;
+import com.fei.sstudy.entity.Course;
 import com.fei.sstudy.util.StatusBarUtils;
+import com.fei.sstudy.view.scheduleView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -74,4 +76,5 @@ public class ScheduleFragment extends Fragment implements View.OnClickListener {
                 .setDuration(1000)
                 .start();
     }
+
 }
