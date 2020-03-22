@@ -197,6 +197,11 @@ public class scheduleView extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        if (mCourse != null){
+            //有课程信息无法长按
+            return false;
+        }
+
         int x = (int)event.getX();
         int y = (int)event.getY();
         parent = (ConstraintLayout) getParent();
