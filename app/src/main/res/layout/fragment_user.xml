@@ -35,7 +35,7 @@
             android:layout_marginLeft="10dp"
             android:textSize="60px"
             android:textStyle="bold"
-            android:text="姓名"/>
+            android:text="未登录"/>
 
         <TextView
             android:id="@+id/tv_college"
@@ -46,7 +46,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:textSize="35px"
-            android:text="软件学院"/>
+            android:text=""/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
