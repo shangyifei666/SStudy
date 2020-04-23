@@ -455,25 +455,25 @@
                     app:layout_constraintStart_toStartOf="@id/v_mon"
                     app:layout_constraintTop_toTopOf="@id/tv_9"/>
                 <com.fei.sstudy.view.scheduleView
-                    android:id="@+id/sch_10"
+                    android:id="@+id/sch_1_10"
                     android:layout_width="50dp"
                     android:layout_height="60dp"
                     app:layout_constraintStart_toStartOf="@id/v_mon"
                     app:layout_constraintTop_toTopOf="@id/tv_10"/>
                 <com.fei.sstudy.view.scheduleView
-                    android:id="@+id/sch_11"
+                    android:id="@+id/sch_1_11"
                     android:layout_width="50dp"
                     android:layout_height="60dp"
                     app:layout_constraintStart_toStartOf="@id/v_mon"
                     app:layout_constraintTop_toTopOf="@id/tv_11"/>
                 <com.fei.sstudy.view.scheduleView
-                    android:id="@+id/sch_12"
+                    android:id="@+id/sch_1_12"
                     android:layout_width="50dp"
                     android:layout_height="60dp"
                     app:layout_constraintStart_toStartOf="@id/v_mon"
                     app:layout_constraintTop_toTopOf="@id/tv_12"/>
                 <com.fei.sstudy.view.scheduleView
-                    android:id="@+id/sch_13"
+                    android:id="@+id/sch_1_13"
                     android:layout_width="50dp"
                     android:layout_height="60dp"
                     app:layout_constraintStart_toStartOf="@id/v_mon"

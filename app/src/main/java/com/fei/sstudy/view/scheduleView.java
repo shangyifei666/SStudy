@@ -71,10 +71,9 @@ public class scheduleView extends View {
             isLongCilck = true;
             toVibrator();
 
-            /**
-             * todo 长按后操作
-             */
-//            mLongClickListener.onLongClick();
+            if (mLongClickListener!=null){
+                mLongClickListener.onLongClick();
+            }
         }
     };
 
