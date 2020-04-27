@@ -2,6 +2,7 @@ package com.fei.sstudy.ui.fragment;
 
 
 import android.animation.ObjectAnimator;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -252,17 +253,21 @@ public class ScheduleFragment extends Fragment implements View.OnClickListener {
         sch_7_12 = view.findViewById(R.id.sch_7_12);
         sch_7_13 = view.findViewById(R.id.sch_7_13);
 
-        for (int i=ScheduleViewId.SCH_1_1; i<=ScheduleViewId.SCH_7_13; i++){
-            final int finalI = i;
-            findSchduleView(i).setLongClickListener(new OnLongClickListener() {
+        for (int j=ScheduleViewId.SCH_1_1; j<=ScheduleViewId.SCH_7_13; j++){
+            final int finalJ = j;
+            findSchduleView(j).setLongClickListener(new OnLongClickListener() {
                 @Override
                 public void onLongClick() {
-                    Log.d(TAG,"onLongClick: " + finalI);
+                    Log.d(TAG,"onLongClick: " + finalJ);
                 }
 
                 @Override
-                public void onViewHeightUp(int i) {
-                    Log.d(TAG,"onViewHeightUP: " + finalI);
+                public void onViewHeightUp(int h) {
+                    Log.d(TAG,"onViewHeightUP: " + h);
+                    if (finalJ%13 == 0){
+                        h = 1;
+                    }
+                    viewAdjust(finalJ,h);
                 }
             });
         }
@@ -292,6 +297,43 @@ public class ScheduleFragment extends Fragment implements View.OnClickListener {
         ObjectAnimator.ofFloat(iv_refrush,"rotation",0f,360f)
                 .setDuration(1000)
                 .start();
+    }
+
+
+    private void viewAdjust(int id, int h){
+        for(int i=1; i<h; i++){
+            enVisi(id+i);
+        }
+
+        setHeight(id,h);
+        setColor(id, Color.BLUE);
+
+        Course c = new Course();
+        c.setPlace("软件学院C-204");
+        c.setTitle("自习");
+        setContent(id,c);
+        findSchduleView(id).requestLayout();
+        findSchduleView(id).invalidate();
+    }
+
+    /**
+     * 控件隐藏
+     * @param id
+     */
+    private void enVisi(int id){
+        findSchduleView(id).setVisibility(View.INVISIBLE);
+    }
+
+    private void setHeight(int id, int h){
+        findSchduleView(id).setHightCount(h);
+    }
+
+    private void setColor(int id, int color){
+        findSchduleView(id).setColor(color);
+    }
+
+    private void setContent(int id,Course course){
+        findSchduleView(id).setCourse(course);
     }
 
     private scheduleView findSchduleView(int id){

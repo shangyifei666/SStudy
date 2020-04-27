@@ -35,6 +35,12 @@ public class scheduleView extends View {
 
     private int mFirstX;
     private int mFirstY;
+
+    private int MoveYMax = 0;  //长按后最大滑动距离
+    private final int MOVE = 150; //下滑一格长度
+    private int nextMove = MOVE; //超过长度后加一
+    private int MoveI = 1; //滑动格数
+
     private Paint mPaint;
     private TextPaint textPaintBig;
     private TextPaint textPaintSmall;
@@ -147,6 +153,14 @@ public class scheduleView extends View {
         setMeasuredDimension(schduleWidth,schduleHeight*scheduleHightCount);
         mRectF = new RectF(0,0,schduleWidth,schduleHeight*scheduleHightCount-4);
 
+    }
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+        //绘制背景
+        canvas.drawRoundRect(mRectF,20,20,mPaint);
+
         if (mCourse != null){
             if (mCourse.title != null){
                 staticLayoutBig = new StaticLayout(
@@ -169,13 +183,6 @@ public class scheduleView extends View {
                         false);
             }
         }
-    }
-
-    @Override
-    protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
-        //绘制背景
-        canvas.drawRoundRect(mRectF,20,20,mPaint);
 
         //绘制字
         if (mCourse != null){
@@ -220,6 +227,16 @@ public class scheduleView extends View {
                 int deltaY = Math.abs(y - mFirstY);
                 Log.d(TAG,"deltaX:"+deltaX);
                 Log.d(TAG,"deltaY:"+deltaY);
+
+                if (isLongCilck){
+                    MoveYMax = MoveYMax > deltaY ? MoveYMax : deltaY;
+                    if (MoveYMax > nextMove){
+                        nextMove += MOVE;
+                        MoveI++;
+                        toVibrator();
+                    }
+                }
+
                 if (deltaX > 20 || deltaY > 20){
                     if (!isLongCilck){
                         Log.d(TAG,"-----------callback----------");
@@ -231,9 +248,15 @@ public class scheduleView extends View {
 
             case MotionEvent.ACTION_UP:
                 Log.d(TAG,"event.ACTION_UP");
-                isLongCilck = false;
                 mHandler.removeCallbacks(mLongClickRunnable);
                 parent.requestDisallowInterceptTouchEvent(false);
+                if(isLongCilck){
+                    isLongCilck = false;
+                    mLongClickListener.onViewHeightUp(MoveI);
+                    MoveYMax = 0;
+                    nextMove = MOVE;
+                    MoveI = 1;
+                }
                 break;
         }
 
