@@ -2,11 +2,17 @@ package com.fei.sstudy.ui.fragment;
 
 
 import android.animation.ObjectAnimator;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +20,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.fei.sstudy.R;
+import com.fei.sstudy.entity.Action;
 import com.fei.sstudy.entity.Course;
+import com.fei.sstudy.ui.CheckPlaceActivity;
 import com.fei.sstudy.util.StatusBarUtils;
 import com.fei.sstudy.view.OnLongClickListener;
 import com.fei.sstudy.view.scheduleView;
@@ -133,6 +141,17 @@ public class ScheduleFragment extends Fragment implements View.OnClickListener {
         // Required empty public constructor
     }
 
+    BroadcastReceiver addclassBroad= new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            Bundle bundle = intent.getExtras();
+            int id = bundle.getInt("id");
+            int h = bundle.getInt("h");
+            String mClass = bundle.getString("class");
+            changeView(id,h,mClass);
+        }
+    };
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -141,6 +160,10 @@ public class ScheduleFragment extends Fragment implements View.OnClickListener {
         View view = inflater.inflate(R.layout.fragment_schedule, container, false);
         changeStatusBar();
         initView(view);
+
+        IntentFilter serviceFilter = new IntentFilter();
+        serviceFilter.addAction(Action.ADD_CLASS);
+        getActivity().registerReceiver(addclassBroad,serviceFilter);
 
         return view;
     }
@@ -301,6 +324,15 @@ public class ScheduleFragment extends Fragment implements View.OnClickListener {
 
 
     private void viewAdjust(int id, int h){
+
+        Intent intent = new Intent(getContext(),CheckPlaceActivity.class);
+        intent.putExtra("id",id);
+        intent.putExtra("h",h);
+        startActivityForResult(intent,0);
+
+    }
+
+    private void changeView(int id,int h,String mClass){
         for(int i=1; i<h; i++){
             enVisi(id+i);
         }
@@ -309,7 +341,7 @@ public class ScheduleFragment extends Fragment implements View.OnClickListener {
         setColor(id, Color.BLUE);
 
         Course c = new Course();
-        c.setPlace("软件学院C-204");
+        c.setPlace(mClass);
         c.setTitle("自习");
         setContent(id,c);
         findSchduleView(id).requestLayout();
