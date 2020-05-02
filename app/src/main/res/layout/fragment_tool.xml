@@ -1,14 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/transparent"
     tools:context=".ui.fragment.ToolFragment">
 
-    <TextView
+    <ImageView
+        android:id="@+id/iv_top"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="工具" />
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:src="@mipmap/tool_background"
+        android:adjustViewBounds="true"/>
 
-</FrameLayout>
+    <ImageView
+        android:id="@+id/iv_zixi"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintTop_toBottomOf="@id/iv_top"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="20dp"
+        android:src="@mipmap/xianweijing"/>
+    <TextView
+        android:id="@+id/tv_zixi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="@+id/iv_zixi"
+        app:layout_constraintRight_toRightOf="@id/iv_zixi"
+        app:layout_constraintTop_toBottomOf="@+id/iv_zixi"
+        android:layout_marginTop="5dp"
+        android:text="自习教室查询"
+        android:textSize="30px"/>
+
+    <ImageView
+        android:id="@+id/iv_shenghuo"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintTop_toBottomOf="@id/iv_top"
+        app:layout_constraintLeft_toRightOf="@+id/iv_zixi"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="30dp"
+        android:src="@mipmap/shubao"/>
+    <TextView
+        android:id="@+id/tv_shenghuo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="@+id/iv_shenghuo"
+        app:layout_constraintRight_toRightOf="@id/iv_shenghuo"
+        app:layout_constraintTop_toBottomOf="@+id/iv_shenghuo"
+        android:layout_marginTop="5dp"
+        android:text="校园生活"
+        android:textSize="30px"/>
+
+    <ImageView
+        android:id="@+id/iv_chengji"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintTop_toBottomOf="@id/iv_top"
+        app:layout_constraintLeft_toRightOf="@+id/iv_shenghuo"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="30dp"
+        android:src="@mipmap/ceshi"/>
+    <TextView
+        android:id="@+id/tv_chengji"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="@+id/iv_chengji"
+        app:layout_constraintRight_toRightOf="@id/iv_chengji"
+        app:layout_constraintTop_toBottomOf="@+id/iv_chengji"
+        android:layout_marginTop="5dp"
+        android:text="成绩查询"
+        android:textSize="30px"/>
+
+    <ImageView
+        android:id="@+id/iv_tiyu"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintTop_toBottomOf="@id/iv_top"
+        app:layout_constraintLeft_toRightOf="@+id/iv_chengji"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="30dp"
+        android:src="@mipmap/lanqiu"/>
+    <TextView
+        android:id="@+id/tv_tiyu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="@+id/iv_tiyu"
+        app:layout_constraintRight_toRightOf="@id/iv_tiyu"
+        app:layout_constraintTop_toBottomOf="@+id/iv_tiyu"
+        android:layout_marginTop="5dp"
+        android:text="体测结果"
+        android:textSize="30px"/>
+
+    <ImageView
+        android:id="@+id/iv_dier"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintTop_toBottomOf="@id/iv_top"
+        app:layout_constraintLeft_toRightOf="@+id/iv_tiyu"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="30dp"
+        android:src="@mipmap/shaoping"/>
+    <TextView
+        android:id="@+id/tv_dier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="@+id/iv_dier"
+        app:layout_constraintRight_toRightOf="@id/iv_dier"
+        app:layout_constraintTop_toBottomOf="@+id/iv_dier"
+        android:layout_marginTop="5dp"
+        android:text="第二课堂"
+        android:textSize="30px"/>
+
+    <ImageView
+        android:id="@+id/iv_geren"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintTop_toBottomOf="@id/iv_zixi"
+        app:layout_constraintStart_toStartOf="@+id/iv_zixi"
+        android:layout_marginTop="40dp"
+        android:src="@mipmap/biyesheng"/>
+    <TextView
+        android:id="@+id/tv_geren"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="@+id/iv_geren"
+        app:layout_constraintRight_toRightOf="@id/iv_geren"
+        app:layout_constraintTop_toBottomOf="@+id/iv_geren"
+        android:layout_marginTop="5dp"
+        android:text="个人信息"
+        android:textSize="30px"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
