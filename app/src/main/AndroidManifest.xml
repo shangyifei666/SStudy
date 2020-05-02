@@ -15,7 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.CheckPlaceActivity"></activity>
+        <activity android:name=".ui.ClassContentTwo"></activity>
+        <activity android:name=".ui.ClassContentOne" />
+        <activity android:name=".ui.CheckPlaceActivity" />
         <activity android:name=".ui.LoginActivity" />
         <activity android:name=".ui.HomeActivity" />
         <activity android:name=".MainActivity">

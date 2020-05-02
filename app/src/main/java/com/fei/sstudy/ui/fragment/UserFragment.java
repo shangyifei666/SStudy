@@ -21,6 +21,8 @@ import com.fei.sstudy.R;
 import com.fei.sstudy.entity.Action;
 import com.fei.sstudy.entity.Config;
 import com.fei.sstudy.entity.Student;
+import com.fei.sstudy.ui.ClassContentOne;
+import com.fei.sstudy.ui.ClassContentTwo;
 import com.fei.sstudy.ui.LoginActivity;
 import com.fei.sstudy.util.JsoupUtil;
 import com.fei.sstudy.util.StatusBarUtils;
@@ -37,6 +39,8 @@ public class UserFragment extends Fragment implements View.OnClickListener {
     private TextView tv_sCollege;
     private ContentLoadingProgressBar lodingBar;
     private ConstraintLayout contentLayout;
+    private TextView tvContent1;
+    private TextView tvContent2;
     /**
      * todo 学号的保存处理
      */
@@ -107,6 +111,11 @@ public class UserFragment extends Fragment implements View.OnClickListener {
         lodingBar.getIndeterminateDrawable().setColorFilter(getResources().getColor(R.color.colorPrimary), PorterDuff.Mode.MULTIPLY);
 
         contentLayout = view.findViewById(R.id.cl_content);
+
+        tvContent1 = view.findViewById(R.id.content_tv_1);
+        tvContent2 = view.findViewById(R.id.content_tv_2);
+        tvContent1.setOnClickListener(this);
+        tvContent2.setOnClickListener(this);
     }
 
     @Override
@@ -114,6 +123,12 @@ public class UserFragment extends Fragment implements View.OnClickListener {
         switch (v.getId()){
             case R.id.btn_login:
                 toLogin();
+                break;
+            case R.id.content_tv_1:
+                toContentActivityOne();
+                break;
+            case R.id.content_tv_2:
+                toContentActivityTwo();
                 break;
         }
     }
@@ -159,5 +174,14 @@ public class UserFragment extends Fragment implements View.OnClickListener {
     private void changeStatusBar(){
         StatusBarUtils.setWindowStatusBarColor(getActivity(),getResources().getColor(R.color.colorPrimary));
         StatusBarUtils.setWindowTextDayBarColor(getActivity());
+    }
+
+    private void toContentActivityOne(){
+        Intent intent = new Intent(getContext(), ClassContentOne.class);
+        startActivity(intent);
+    }
+    private void toContentActivityTwo(){
+        Intent intent = new Intent(getContext(), ClassContentTwo.class);
+        startActivity(intent);
     }
 }

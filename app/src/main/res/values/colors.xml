@@ -18,4 +18,7 @@
     <color name="color_education_system">#0483D4</color>
     <color name="color_shedule_system">#FFFFFF</color>
     <color name="color_tool_system">#1C1D32</color>
+
+    <color name="color_text_green">#28FF28</color>
+    <color name="color_text_red">#EA0000</color>
 </resources>
